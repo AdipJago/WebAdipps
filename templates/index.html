@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<!-- ============================================================
+     PERSONAL DIGITAL PORTFOLIO — AHNAF ADIB YUNAN
+     File: index.html  |  Tahap 1 dari 4 (HTML structure)
+     Font: Inter (UI/body), General Sans (display/headline)
+     Palet: #FFFFFF #111111 #F5F5F5 #2F2F2F  | Accent: #3B82F6
+     ============================================================ -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Ahnaf Adib Yunan — Information Systems Student, ITS</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Portofolio digital Ahnaf Adib Yunan, mahasiswa Sistem Informasi Institut Teknologi Sepuluh Nopember. Menampilkan proyek, pengalaman, sertifikat, dan proposal.">
+  <meta name="keywords" content="Ahnaf Adib Yunan, portofolio, Sistem Informasi, ITS, developer, UI/UX, mahasiswa">
+  <meta name="author" content="Ahnaf Adib Yunan">
+  <link rel="canonical" href="/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ahnaf Adib Yunan — Information Systems Student">
+  <meta property="og:description" content="Building Technology. Designing Experiences. Creating Impact.">
+  <meta property="og:image" content="{{ url_for('assets', filename='profile.jpg') }}">
+  <meta property="og:locale" content="id_ID">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ url_for('assets', filename='favicon.png') }}">
+
+  <!-- Fonts: Inter + General Sans (Fontshare) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body data-theme="light">
+
+  <!-- ============================================================
+       LOADING SCREEN
+       ============================================================ -->
+  <div id="loader" class="loader" aria-hidden="true">
+    <div class="loader__counter">
+      <span class="loader__digit" data-loader-count>0</span>
+      <span class="loader__percent">%</span>
+    </div>
+    <div class="loader__name">AHNAF&nbsp;ADIB&nbsp;YUNAN</div>
+    <div class="loader__bar"><span class="loader__bar-fill"></span></div>
+  </div>
+
+  <!-- Scroll progress indicator -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressFill"></span></div>
+
+  <!-- Custom cursor (desktop only, toggled via JS) -->
+  <div class="cursor cursor--dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor cursor--ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar" id="navbar">
+    <a href="#hero" class="navbar__logo">AA<span>Y</span></a>
+
+    <nav class="navbar__links" aria-label="Navigasi utama">
+      <a href="#about" data-nav>About</a>
+      <a href="#education" data-nav>Education</a>
+      <a href="#skills" data-nav>Skills</a>
+      <a href="#experience" data-nav>Experience</a>
+      <a href="#projects" data-nav>Projects</a>
+      <a href="#proposal" data-nav>Proposal</a>
+      <a href="#certificates" data-nav>Certificates</a>
+      <a href="#gallery" data-nav>Gallery</a>
+      <a href="#contact" data-nav>Contact</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Ganti mode gelap/terang">
+        <span class="theme-toggle__icon"></span>
+      </button>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile fullscreen menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu__links" aria-label="Navigasi mobile">
+      <a href="#about" data-nav>01 · About</a>
+      <a href="#education" data-nav>02 · Education</a>
+      <a href="#skills" data-nav>03 · Skills</a>
+      <a href="#experience" data-nav>04 · Experience</a>
+      <a href="#projects" data-nav>05 · Projects</a>
+      <a href="#proposal" data-nav>06 · Proposal</a>
+      <a href="#certificates" data-nav>07 · Certificates</a>
+      <a href="#gallery" data-nav>08 · Gallery</a>
+      <a href="#contact" data-nav>09 · Contact</a>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <!-- ============================================================
+         01 · HERO
+         ============================================================ -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <div class="hero__blob"></div>
+      </div>
+
+      <p class="hero__eyebrow" data-reveal>Information Systems Student · ITS Surabaya</p>
+
+      <h1 class="hero__title">
+        <span class="hero__title-line" data-reveal-text>AHNAF</span>
+        <span class="hero__title-line hero__title-line--accent" data-reveal-text>ADIB YUNAN</span>
+      </h1>
+
+      <p class="hero__tagline" data-typing
+         data-words="Building Technology.|Designing Experiences.|Creating Impact.">
+        <span class="hero__tagline-text"></span><span class="hero__tagline-cursor">|</span>
+      </p>
+
+      <div class="hero__cta">
+        <a href="#projects" class="btn btn--primary">
+          <span>Explore Work</span>
+        </a>
+        <a href="{{ url_for('assets', filename='cv.pdf') }}" class="btn btn--ghost" download>
+          <span>Download CV</span>
+        </a>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         02 · ABOUT
+         ============================================================ -->
+    <section class="about" id="about">
+      <div class="section-head">
+        <span class="section-number">01</span>
+        <h2 class="section-title">About</h2>
+      </div>
+
+      <div class="about__grid">
+        <figure class="about__photo" data-reveal>
+          <img src="{{ url_for('assets', filename='profile1.jpg') }}"
+               alt="Foto Ahnaf Adib Yunan" loading="lazy">
+        </figure>
+
+        <div class="about__content" data-reveal>
+          <p class="about__lead">
+            Saya Ahnaf Adib Yunan — dipanggil Adib — mahasiswa Sistem Informasi
+            di Institut Teknologi Sepuluh Nopember. Saya percaya teknologi
+            paling bermakna ketika ia menyederhanakan hal yang rumit dan
+            membuat pengalaman terasa manusiawi.
+          </p>
+          <p class="about__body">
+            Ketertarikan saya berpijak pada tiga hal: sistem yang berjalan
+            rapi di belakang layar, antarmuka yang terasa jujur bagi
+            penggunanya, dan kepemimpinan yang menghubungkan keduanya.
+            Perjalanan pendidikan saya — dari Surakarta hingga Surabaya —
+            membentuk cara saya melihat masalah: runtut, terstruktur, namun
+            tetap terbuka pada eksplorasi.
+          </p>
+
+          <div class="about__meta">
+            <div class="about__meta-item">
+              <span class="about__meta-label">Vision</span>
+              <p>Menjadi praktisi teknologi yang merancang sistem sekaligus pengalaman yang berdampak.</p>
+            </div>
+            <div class="about__meta-item">
+              <span class="about__meta-label">Mission</span>
+              <p>Belajar, berkolaborasi, dan membangun produk digital yang relevan dan mudah digunakan.</p>
+            </div>
+            <div class="about__meta-item">
+              <span class="about__meta-label">Interests</span>
+              <p>Web development, UI/UX, kecerdasan buatan, dan organisasi kemahasiswaan.</p>
+            </div>
+            <div class="about__meta-item">
+              <span class="about__meta-label">Values</span>
+              <p>Disiplin, rasa ingin tahu, dan kejujuran dalam proses berkarya.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         03 · EDUCATION (timeline)
+         ============================================================ -->
+    <section class="education" id="education">
+      <div class="section-head">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Education</h2>
+      </div>
+
+      <ol class="timeline">
+        <li class="timeline__item" data-reveal>
+          <span class="timeline__dot"></span>
+          <div class="timeline__content">
+            <span class="timeline__stage">Sekolah Dasar</span>
+            <h3>SDII AL Abidin Surakarta</h3>
+            <p>Belajar berkomunikasi dan menyelesaikan masalah.</p>
+          </div>
+        </li>
+        <li class="timeline__item" data-reveal>
+          <span class="timeline__dot"></span>
+          <div class="timeline__content">
+            <span class="timeline__stage">Sekolah Menengah Pertama</span>
+            <h3>SMPI Al Abidin Surakarta</h3>
+            <p>Mulai aktif dalam kegiatan sekolah dan minat teknologi dasar.</p>
+          </div>
+        </li>
+        <li class="timeline__item" data-reveal>
+          <span class="timeline__dot"></span>
+          <div class="timeline__content">
+            <span class="timeline__stage">Sekolah Menengah Atas</span>
+            <h3>SMAN 1 Surakarta</h3>
+            <p>Memperdalam ketertarikan pada sains, organisasi, dan kepemimpinan.</p>
+          </div>
+        </li>
+        <li class="timeline__item timeline__item--current" data-reveal>
+          <span class="timeline__dot"></span>
+          <div class="timeline__content">
+            <span class="timeline__stage">Perguruan Tinggi</span>
+            <h3>Institut Teknologi Sepuluh Nopember</h3>
+            <p>Sistem Informasi — mendalami teknologi, data, dan desain pengalaman pengguna.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============================================================
+         04 · SKILLS
+         ============================================================ -->
+    <section class="skills" id="skills">
+      <div class="section-head">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Skills</h2>
+      </div>
+
+      <div class="skills__grid">
+        {% set skills = [
+          ('Programming', 85),
+          ('Web Development', 88),
+          ('UI/UX Design', 80),
+          ('Artificial Intelligence', 70),
+          ('Database', 78),
+          ('Leadership', 82),
+          ('Communication', 84),
+          ('Visual Design', 76)
+        ] %}
+        {% for name, value in skills %}
+        <div class="skill-bar" data-reveal>
+          <div class="skill-bar__head">
+            <span class="skill-bar__name">{{ name }}</span>
+            <span class="skill-bar__value">{{ value }}%</span>
+          </div>
+          <div class="skill-bar__track">
+            <span class="skill-bar__fill" data-skill-value="{{ value }}"></span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- ============================================================
+         05 · EXPERIENCE
+         ============================================================ -->
+    <section class="experience" id="experience">
+      <div class="section-head">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Experience</h2>
+      </div>
+
+      <div class="experience__list">
+        {% for exp in experiences %}
+        <article class="experience__item" data-reveal>
+          <div class="experience__period">{{ exp.period }}</div>
+          <div class="experience__body">
+            <h3>{{ exp.title }}</h3>
+            <p class="experience__org">{{ exp.organization }}</p>
+            <p class="experience__desc">{{ exp.description }}</p>
+          </div>
+          <span class="experience__tag">{{ exp.category }}</span>
+        </article>
+        {% else %}
+        <!-- Contoh placeholder — akan diisi dinamis dari database via app.py -->
+        <article class="experience__item" data-reveal>
+          <div class="experience__period">2026 — Sekarang</div>
+          <div class="experience__body">
+            <h3>Coming Soon</h3>
+            <p class="experience__org">Organisasi Mahasiswa, ITS</p>
+            <p class="experience__desc">Mengelola sistem informasi internal dan mendukung kegiatan digitalisasi organisasi.</p>
+          </div>
+          <span class="experience__tag">Organisasi</span>
+        </article>
+
+        <article class="experience__item" data-reveal>
+          <div class="experience__period">2024 — 2025</div>
+          <div class="experience__body">
+            <h3>Ketua Komisi A Majelis Musyawarah Perwakilan Kelas (MMPK) 2024/2025.</h3>
+            <p class="experience__org">Organisasi Siswa, SMAN 1 Surakarta</p>
+            <p class="experience__desc">bertanggung jawab mengoordinasikan dan mengawasi sejumlah kegiatan ekstrakurikuler di bawah naungan Komisi A, antara lain Rohkat (Komunitas Katolik), Rohkris (Komunitas Kristen), Rohis (Komunitas Islam), Tahfidz, Paspram (Pasukan Pramuka SMANSA), dan DA (Dewan Ambalan). Selain itu, saya juga membawahi dua Seksi Bidang (Sekbid), yaitu Sekbid Kerohanian serta Sekbid Bahasa dan Kebudayaan (KBB/PPS).</p>
+          </div>
+          <span class="experience__tag">Organisasi</span>
+        </article>
+
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- ============================================================
+         06 · PROJECTS
+         ============================================================ -->
+    <section class="projects" id="projects">
+      <div class="section-head">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Projects</h2>
+      </div>
+
+      <div class="projects__grid">
+        {% for project in projects %}
+        <article class="project-card" data-reveal data-project-id="{{ project.id }}">
+          <div class="project-card__thumb">
+            <img src="{{ project.thumbnail }}" alt="Thumbnail {{ project.title }}" loading="lazy">
+          </div>
+          <div class="project-card__body">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <ul class="project-card__stack">
+              {% for tech in project.technologies %}<li>{{ tech }}</li>{% endfor %}
+            </ul>
+            <div class="project-card__links">
+              {% if project.github %}<a href="{{ project.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+              {% if project.demo %}<a href="{{ project.demo }}" target="_blank" rel="noopener">Demo</a>{% endif %}
+              <button class="project-card__detail" data-project-open="{{ project.id }}">Detail</button>
+            </div>
+          </div>
+        </article>
+        {% else %}
+        <article class="project-card" data-reveal>
+          <div class="project-card__thumb"><div class="project-card__placeholder"></div></div>
+          <div class="project-card__body">
+            <h3>Nama Proyek</h3>
+            <p>Deskripsi singkat proyek akan tampil di sini setelah diunggah melalui dashboard admin.</p>
+            <ul class="project-card__stack"><li>Flask</li><li>SQLite</li><li>JavaScript</li></ul>
+            <div class="project-card__links">
+              <a href="#" onclick="return false;">GitHub</a>
+              <a href="#" onclick="return false;">Demo</a>
+              <button class="project-card__detail">Detail</button>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Project detail popup (shared modal, populated by script.js) -->
+    <div class="project-modal" id="projectModal" aria-hidden="true">
+      <div class="project-modal__overlay" data-modal-close></div>
+      <div class="project-modal__panel" role="dialog" aria-modal="true">
+        <button class="project-modal__close" data-modal-close aria-label="Tutup">&times;</button>
+        <div class="project-modal__content" id="projectModalContent"></div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         07 · PROPOSAL
+         ============================================================ -->
+    <section class="proposal" id="proposal">
+      <div class="section-head">
+        <span class="section-number">06</span>
+        <h2 class="section-title">Proposal</h2>
+      </div>
+
+      <div class="proposal__list">
+        {% for doc in proposals %}
+        <article class="proposal-card" data-reveal>
+          <div class="proposal-card__meta">
+            <span class="proposal-card__category">{{ doc.category }}</span>
+            <span class="proposal-card__date">{{ doc.date }}</span>
+          </div>
+          <h3>{{ doc.title }}</h3>
+          <div class="proposal-card__actions">
+            <button class="btn btn--ghost btn--sm" data-preview-pdf="{{ doc.file_url }}">Preview</button>
+            <a href="{{ doc.file_url }}" class="btn btn--primary btn--sm" download>Download</a>
+          </div>
+        </article>
+        {% else %}
+        <article class="proposal-card" data-reveal>
+          <div class="proposal-card__meta">
+            <span class="proposal-card__category">Akademik</span>
+            <span class="proposal-card__date">2025</span>
+          </div>
+          <h3>Contoh Judul Proposal</h3>
+          <div class="proposal-card__actions">
+            <button class="btn btn--ghost btn--sm" onclick="return false;">Preview</button>
+            <a href="#" class="btn btn--primary btn--sm" onclick="return false;">Download</a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- PDF preview modal -->
+    <div class="pdf-modal" id="pdfModal" aria-hidden="true">
+      <div class="pdf-modal__overlay" data-modal-close></div>
+      <div class="pdf-modal__panel" role="dialog" aria-modal="true">
+        <button class="pdf-modal__close" data-modal-close aria-label="Tutup">&times;</button>
+        <iframe id="pdfModalFrame" title="Pratinjau dokumen"></iframe>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         08 · CERTIFICATES
+         ============================================================ -->
+    <section class="certificates" id="certificates">
+      <div class="section-head">
+        <span class="section-number">07</span>
+        <h2 class="section-title">Certificates</h2>
+      </div>
+
+      <div class="certificates__grid">
+        {% for cert in certificates %}
+        <button class="certificate-card" data-reveal data-cert-preview="{{ cert.image_url }}">
+          <img src="{{ cert.image_url }}"alt="Sertifikat {{ cert.title }}"loading="lazy">
+          <span class="certificate-card__title">{{ cert.title }}</span>
+        </button>
+        {% else %}
+        <button class="certificate-card" data-reveal onclick="return false;">
+          <div class="certificate-card__placeholder"></div>
+          <span class="certificate-card__title">Contoh Sertifikat</span>
+        </button>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Certificate preview lightbox -->
+    <div class="lightbox" id="certLightbox" aria-hidden="true">
+      <div class="lightbox__overlay" data-modal-close></div>
+      <button class="lightbox__close" data-modal-close aria-label="Tutup">&times;</button>
+      <img id="certLightboxImg" alt="Pratinjau sertifikat yang dipilih">
+    </div>
+
+    <!-- ============================================================
+         09 · GALLERY (masonry)
+         ============================================================ -->
+    <section class="gallery" id="gallery">
+      <div class="section-head">
+        <span class="section-number">08</span>
+        <h2 class="section-title">Gallery</h2>
+      </div>
+
+      <div class="gallery__filters" role="tablist" aria-label="Filter galeri">
+        <button class="gallery__filter is-active" data-filter="all">All</button>
+        <button class="gallery__filter" data-filter="kegiatan">Kegiatan</button>
+        <button class="gallery__filter" data-filter="organisasi">Organisasi</button>
+        <button class="gallery__filter" data-filter="proyek">Proyek</button>
+        <button class="gallery__filter" data-filter="seminar">Seminar</button>
+      </div>
+
+      <div class="gallery__masonry" id="galleryMasonry">
+        {% for photo in gallery_photos %}
+        <figure class="gallery__item" data-category="{{ photo.category }}" data-reveal>
+          <img src="{{ photo.url }}" alt="{{ photo.caption }}" loading="lazy">
+        </figure>
+        {% else %}
+        <figure class="gallery__item" data-category="kegiatan" data-reveal>
+          <div class="gallery__placeholder"></div>
+        </figure>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- ============================================================
+         10 · CONTACT
+         ============================================================ -->
+    <section class="contact" id="contact">
+      <div class="section-head">
+        <span class="section-number">09</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+
+      <div class="contact__grid">
+        <div class="contact__info" data-reveal>
+          <p class="contact__lead">Terbuka untuk kolaborasi, magang, maupun sekadar berdiskusi tentang teknologi.</p>
+
+          <ul class="contact__channels">
+            <li><a href="https://wa.me/6285600251347" target="_blank" rel="noopener"><span>WhatsApp</span></a></li>
+            <li><a href="mailto:adibyunan6@gmail.com"><span>Email</span></a></li>
+            <li><a href="https://instagram.com/ahnapp_" target="_blank" rel="noopener"><span>Instagram</span></a></li>
+            <li><a href="https://www.linkedin.com/in/ahnaf-a-52617b315/" target="_blank" rel="noopener"><span>LinkedIn</span></a></li>
+            <li><a href="https://github.com/AdipJago" target="_blank" rel="noopener"><span>GitHub</span></a></li>
+          </ul>
+        </div>
+
+        <form class="contact__form" id="contactForm" data-reveal novalidate>
+          <div class="form-field">
+            <label for="cf-name">Nama</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name">
+            <span class="form-field__error" data-error-for="cf-name"></span>
+          </div>
+          <div class="form-field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email">
+            <span class="form-field__error" data-error-for="cf-email"></span>
+          </div>
+          <div class="form-field">
+            <label for="cf-message">Pesan</label>
+            <textarea id="cf-message" name="message" rows="4" required></textarea>
+            <span class="form-field__error" data-error-for="cf-message"></span>
+          </div>
+          <button type="submit" class="btn btn--primary">
+            <span>Kirim Pesan</span>
+          </button>
+          <p class="contact__form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <span class="footer__copy">&copy; <span id="footerYear"></span> Ahnaf Adib Yunan. All rights reserved.</span>
+    <div class="footer__social">
+      <a href="https://wa.me/6285600251347" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://instagram.com/ahnapp_" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@fypmars?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">Tiktok</a>
+      <a href="https://www.linkedin.com/in/ahnaf-a-52617b315/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/AdipJago" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <button class="footer__totop" id="backToTop" aria-label="Kembali ke atas">&uarr;</button>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
