@@ -57,8 +57,10 @@ SUBFOLDERS = {
     "gallery": "gallery",
 }
 
-for sub in SUBFOLDERS.values():
-    os.makedirs(os.path.join(ASSETS_DIR, sub), exist_ok=True)
+# Jangan membuat folder saat berjalan di Vercel
+if not os.environ.get("VERCEL"):
+    for sub in SUBFOLDERS.values():
+        os.makedirs(os.path.join(ASSETS_DIR, sub), exist_ok=True)
 
 db = SQLAlchemy(app)
 
